@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+
+        {% if forms.errors %}
+        <p> ♂THROW ME SOME NUMBERS♂ </p>
+        {% endif %}
+
+        {{ form }}
+        <input type="submit" value="Register">
+    </form>
+{% endblock content %}
+

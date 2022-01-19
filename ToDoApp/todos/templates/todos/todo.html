@@ -1,0 +1,87 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header shadow-sm bg-white">
+                    <form action="{% url 'logout'%}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-log-out"></span> Log out
+                        </button>
+                    </form>
+                    <h3 style="color:#233E8B;"> Hello {{user.username}}</h3>
+                    <h4 style="color:#233E8B;">You have {{todo_list|length}} tasks</h4>
+                    <!-- <img class="rafiki" src="{% static 'Checklist-rafiki.png' %}" width="150" height="150"> -->
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <form action="{% url 'insert_item' %}" method="post" autocomplete="off">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="content">
+                                    <div class="input-group-append text-info">
+                                        <span class="input-group-text bg-white py-0">
+                                            <button type="submit" class="btn btn-sm text-info">
+                                                <i class="fas fa-plus-circle" style="color: #233E8B;"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                        {% for todo in todo_list %}
+                        <li class="list-group-item">
+
+                            <div class="d-flex">
+                                <div class="p-2">
+                                    <div class="form-check">
+                                        <form action="{% url 'delete_item' todo.id %}" method="post"
+                                            class="float-right d-inline">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="p-2">
+                                    <p>{{todo.content}}</p>
+                                </div>
+                                <div class="ml-auto p-2">
+                                    <form action="{% url 'delete_item' todo.id %}" method="post"
+                                        class="float-right d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn">
+                                            <i style="font-size: 0.73em;"
+                                                class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        {% empty %}
+                        <li class="list-group-item">
+                            <span class="font-italic">There are no tasks ^^ </span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+{% endblock content %}
