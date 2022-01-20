@@ -14,7 +14,6 @@
                     </form>
                     <h3 style="color:#233E8B;"> Hello {{user.username}}</h3>
                     <h4 style="color:#233E8B;">You have {{todo_list|length}} tasks</h4>
-                    <!-- <img class="rafiki" src="{% static 'Checklist-rafiki.png' %}" width="150" height="150"> -->
                 </div>
 
                 <div class="card-body">
@@ -35,36 +34,19 @@
                             </form>
                         </li>
                         {% for todo in todo_list %}
-                        <li class="list-group-item">
+                        <li class="list-group-item">{{todo.content}}
 
-                            <div class="d-flex">
-                                <div class="p-2">
-                                    <div class="form-check">
-                                        <form action="{% url 'delete_item' todo.id %}" method="post"
-                                            class="float-right d-inline">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="p-2">
-                                    <p>{{todo.content}}</p>
-                                </div>
-                                <div class="ml-auto p-2">
-                                    <form action="{% url 'delete_item' todo.id %}" method="post"
-                                        class="float-right d-inline">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn">
-                                            <i style="font-size: 0.73em;"
-                                                class="far fa-trash-alt fa-lg text-danger float-right"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
+                            <form action="{% url 'delete_item' todo.id %}" method="post" class="float-right d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn" style="font-size: 0.73em;">
+                                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                </button>
+                            </form>
+
                         </li>
                         {% empty %}
                         <li class="list-group-item">
-                            <span class="font-italic">There are no tasks ^^ </span>
+                            <span class="font-italic">No todo item found.</span>
                         </li>
                         {% endfor %}
                     </ul>
