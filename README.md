@@ -4,7 +4,7 @@
 ## Installation
 ```
 git clone https://github.com/AldarKose-dev/ToDoApp.git
-cd ToDoApp
+cd ./ToDoApp
 ```
 
 ## Usage
