@@ -35,3 +35,7 @@ python manage.py runserver
 ### Also you can logout
 ![image](https://user-images.githubusercontent.com/78011086/150297332-366ddfaa-c87b-4525-9381-44c232d747ad.png)
 ![image](https://user-images.githubusercontent.com/78011086/150297379-ab1266dd-02f4-44a9-9bcd-3705144ec913.png)
+
+
+## License
+[MIT](https://github.com/Kaiyrkeldi/Scrapper/blob/main/LICENSE)
