@@ -9,7 +9,7 @@ cd ToDoApp
 
 ## Usage
 ```
-cd ToDoApp
+cd (pathToProject)./ToDoApp
 python manage.py runserver
 ```
 
