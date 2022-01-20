@@ -7,12 +7,26 @@ git clone https://github.com/AldarKose-dev/ToDoApp.git
 cd ./ToDoApp
 ```
 
+
+
 ## Usage
 ```
 cd (pathToProject)./ToDoApp
 python manage.py runserver
 ```
+#### Change database settings.url
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'table_name',
+        'USER': 'username',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+    }
+}
 
+```
 ## Examples
 
 ### You need to login in to your account. If you don't have account register.
